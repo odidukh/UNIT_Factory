@@ -1,0 +1,105 @@
+{
+    [
+        {
+            "type" : "camera";
+            "position" : [0, -15, 5];
+            "rotation" : [0, 0, 0]
+        },        
+        {
+            "type" : "point_light";
+            "position" : [0, 0, 10];
+            "intensivity" : 0.7
+        },
+        {
+            "type" : "plane";
+            "position" : [0, 0, 0];
+            "rotation" : [0, 0, 0];
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xBCECE0
+        },
+        {
+            "type" : "cone";
+            "position" : [-90, 0, 20];
+            "rotation" : [0, 0, 0];
+            "angle" : 30;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x36EEE0
+        },
+        {
+            "type" : "cylinder";
+            "position" : [-80, 18, 20];
+            "rotation" : [0, 0, 0];
+            "radius" : 5;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xF652A0
+        },
+         {
+            "type" : "disk";
+            "position" : [-65, 32, 20];
+            "rotation" : [76, 0, 23];
+            "radius" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x4C5270
+        },
+        {
+            "type" : "hemisphere";
+            "position" : [-45, 46, 17];
+            "rotation" : [28, 0, 16];
+            "radius" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xF8D210
+        },
+        {
+            "type" : "limit_cone";
+            "position" : [-26, 69, 17];
+            "rotation" : [0, 0, 0];
+            "radius" : 10;
+            "height" : 20;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xF51720
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [6, 73, 17];
+            "rotation" : [0, 0, 0];
+            "radius" : 10;
+            "height" : 30;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xF9F940
+        },
+        {
+            "type" : "sphere";
+            "position" : [35, 60, 25];
+            "rotation" : [28, 0, 16];
+            "radius" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xEAC5B0
+        },
+        {
+            "type" : "triangle";
+            "point_1" : [49, 31, 13];
+            "point_2" : [39, 31, 23];
+            "point_3" : [39, 41, 13];
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xFF0080
+        }
+    ]
+}

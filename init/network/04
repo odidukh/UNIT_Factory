@@ -1,0 +1,1 @@
+netstat -nr | grep -m 1 "default" | cut -d " " -f 13

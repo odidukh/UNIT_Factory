@@ -1,0 +1,4 @@
+TThe cron daemon on Linux runs tasks in the background at specific times;
+By the command 
+crontab -e
+you open file in which you can write scheduled commands using specific syntaxi.

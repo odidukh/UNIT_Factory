@@ -1,0 +1,43 @@
+{
+	[
+		{
+			"type" : "camera";
+			"position" : [-10, -10, 5];
+			"rotation" : [0, 0, -45]
+		},
+		{
+			"type" : "point_light";
+			"position" : [15, -30, 30];
+			"intensivity" : 0.3
+		},
+		{
+			"type" : "point_light";
+			"position" : [0, -30, 30];
+			"intensivity" : 0.3
+		},
+		{
+			"type" : "point_light";
+			"position" : [-15, -30, 30];
+			"intensivity" : 0.3
+		},
+		{
+			"type" : "plane";
+			"position" : [0, 0, 0];
+			"rotation" : [0, 0, 0];
+			"reflection" : 0;
+			"transparency" : 0;
+			"ior" : 0;
+			"color" : 0xaaaaaa
+		},
+		{
+			"type" : "sphere";
+			"position" : [0, 0, 5];
+			"rotation" : [0, 0, 0];
+			"reflection" : 0;
+			"transparency" : 0;
+			"ior" : 0;
+			"radius" : 3;
+			"color" : 0xccddff
+		}
+	]
+}

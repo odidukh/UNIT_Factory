@@ -1,0 +1,4 @@
+crontab -l > cron_temp
+echo "0 4 * * 0 apt update >> /var/log/update_script.log && apt upgrade >> /var/log/update_script.log" >> cron_temp
+crontab cron_temp
+rm cron_temp

@@ -1,0 +1,527 @@
+{
+	[
+		{
+			"type" : "camera";
+			"position" : [-20, -130, 0];
+			"rotation" : [0, 0, 0]
+		},
+		{
+			"type" : "point_light";
+			"position" : [-20, -130, 0];
+			"intensivity" : 0.3
+		},
+        {
+            "type" : "plane";
+            "position" : [0, 20, 0];
+            "rotation" : [90, 0, 0];
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xdddddd
+        },
+        {
+            "type" : "hemisphere";
+            "position" : [0, 0, 0];
+            "rotation" : [0, -30, 0];
+            "radius" : 10;
+            "reflection" : 0.1;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffcc00
+        },
+        {
+            "type" : "hemisphere";
+            "position" : [0, 0, 0];
+            "rotation" : [0, 210, 0];
+            "radius" : 10;
+            "reflection" : 0.1;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffcc00
+        },
+        {
+            "type" : "sphere";
+            "position" : [-3.75, -5.25, 6.75];
+            "rotation" : [0, 0, 0];
+            "radius" : 1.5;
+            "reflection" : 0;
+            "transparency" : 0.7;
+            "ior" : 0;
+            "color" : 0xff0000
+        },
+        {
+            "type" : "sphere";
+            "position" : [-3.75, 5.25, 6.75];
+            "rotation" : [0, 0, 0];
+            "radius" : 1.5;
+            "reflection" : 0;
+            "transparency" : 0.7;
+            "ior" : 0;
+            "color" : 0xff0000
+        },
+
+        {
+            "type" : "sphere";
+            "position" : [-10, 0, 0];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-20, 0, 0];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-30, 0, 0];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-40, 0, 0];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-50, 0, 0];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-60, 0, 0];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-40, 0, 10];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-40, 0, 20];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-40, 0, 30];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-40, 0, 40];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-40, 0, 50];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [-40, 0, 60];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+
+        {
+            "type" : "limit_cylinder";
+            "position" : [75, 0, 20];
+            "rotation" : [0, 0, 0];
+            "radius" : 3;
+            "height" : 50;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-25, 0, 20];
+            "rotation" : [0, 90, 0];
+            "radius" : 3;
+            "height" : 100;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-25, 0, 20];
+            "rotation" : [0, 0, 0];
+            "radius" : 3;
+            "height" : 50;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-25, 0, 70];
+            "rotation" : [0, 90, 0];
+            "radius" : 3;
+            "height" : 100;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+
+        {
+            "type" : "limit_cylinder";
+            "position" : [125, 0, -70];
+            "rotation" : [0, 0, 0];
+            "radius" : 3;
+            "height" : 50;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [25, 0, -70];
+            "rotation" : [0, 90, 0];
+            "radius" : 3;
+            "height" : 100;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [25, 0, -70];
+            "rotation" : [0, 0, 0];
+            "radius" : 3;
+            "height" : 50;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [25, 0, -20];
+            "rotation" : [0, 90, 0];
+            "radius" : 3;
+            "height" : 100;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+
+        {
+            "type" : "limit_cylinder";
+            "position" : [-5, 0, -70];
+            "rotation" : [0, 0, 0];
+            "radius" : 3;
+            "height" : 50;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-105, 0, -70];
+            "rotation" : [0, 90, 0];
+            "radius" : 3;
+            "height" : 100;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-105, 0, -70];
+            "rotation" : [0, 0, 0];
+            "radius" : 3;
+            "height" : 50;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-105, 0, -20];
+            "rotation" : [0, 90, 0];
+            "radius" : 3;
+            "height" : 100;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+
+        {
+            "type" : "sphere";
+            "position" : [10, 0, -20];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [10, 0, -30];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [10, 0, -40];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+        {
+            "type" : "sphere";
+            "position" : [10, 0, -50];
+            "rotation" : [0, 0, 0];
+            "radius" : 2;
+            "reflection" : 0.2;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffffff
+        },
+
+
+        {
+            "type" : "limit_cylinder";
+            "position" : [-55, 0, 20];
+            "rotation" : [0, 0, 0];
+            "radius" : 3;
+            "height" : 50;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-155, 0, 20];
+            "rotation" : [0, 90, 0];
+            "radius" : 3;
+            "height" : 100;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-155, 0, 20];
+            "rotation" : [0, 0, 0];
+            "radius" : 3;
+            "height" : 50;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+        {
+            "type" : "limit_cylinder";
+            "position" : [-155, 0, 70];
+            "rotation" : [0, 90, 0];
+            "radius" : 3;
+            "height" : 100;
+            "reflection" : ;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x66ccff
+        },
+
+        {
+            "type" : "hemisphere";
+            "position" : [-80, 0, 0];
+            "rotation" : [0, 0, 0];
+            "radius" : 6;
+            "reflection" : 0.1;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xff66ff
+        },
+        {
+            "type" : "limit_cone";
+            "position" : [-80, 0, 0];
+            "rotation" : [0, 180, 0];
+            "radius" : 2;
+            "height" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xff66ff
+        },
+        {
+            "type" : "limit_cone";
+            "position" : [-84, 0, 0];
+            "rotation" : [0, 180, 0];
+            "radius" : 2;
+            "height" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xff66ff
+        },
+        {
+            "type" : "limit_cone";
+            "position" : [-76, 0, 0];
+            "rotation" : [0, 180, 0];
+            "radius" : 2;
+            "height" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xff66ff
+        },
+
+        {
+            "type" : "hemisphere";
+            "position" : [50, 0, 0];
+            "rotation" : [0, 0, 0];
+            "radius" : 6;
+            "reflection" : 0.1;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x00ffff
+        },
+        {
+            "type" : "limit_cone";
+            "position" : [50, 0, 0];
+            "rotation" : [0, 180, 0];
+            "radius" : 2;
+            "height" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x00ffff
+        },
+        {
+            "type" : "limit_cone";
+            "position" : [54, 0, 0];
+            "rotation" : [0, 180, 0];
+            "radius" : 2;
+            "height" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x00ffff
+        },
+        {
+            "type" : "limit_cone";
+            "position" : [46, 0, 0];
+            "rotation" : [0, 180, 0];
+            "radius" : 2;
+            "height" : 10;
+            "reflection" : 0;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0x00ffff
+        }
+	]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

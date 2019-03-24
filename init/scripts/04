@@ -1,0 +1,11 @@
+#!/bin/bash
+crontab -l > temp_file
+echo "0 0 * * * \
+	if [ -f .check_hash] ; then \
+		md5sum /etc/crontab > .check_hash; \
+	else \
+		md5sum /etc/crontab > ./check_hash_2; \
+		if ! diff .check_hash .check_hash_2 > /dev/null; \
+			 mail -s '/etc/crontab was modified' root ; fi fi" >> temp_file
+crontab temp_file
+rm temp_file

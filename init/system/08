@@ -1,0 +1,4 @@
+If the keys  were not generated you would have to do itt by yourself by
+the command "ssh-keygen". There you can choose were to save file with keys. 
+By defaul is in "/root/.ssh/" folder.
+The file with public key is called id_rsa.pub and with the private id_rsa.

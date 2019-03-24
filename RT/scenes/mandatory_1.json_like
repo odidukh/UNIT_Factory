@@ -1,0 +1,77 @@
+{
+	[
+		{
+			"type" : "camera";
+			"position" : [0, -20, 5];
+			"rotation" : [0, 0, 0]
+		},
+		{
+			"type" : "point_light";
+			"position" : [30, -30, 30];
+			"intensivity" : 0.5
+		},
+		{
+			"type" : "point_light";
+			"position" : [-30, -30, 30];
+			"intensivity" : 0.5
+		},
+		{
+			"type" : "plane";
+			"position" : [0, 0, 0];
+			"rotation" : [0, 0, 0];
+			"reflection" : 0;
+			"transparency" : 0;
+			"ior" : 0;
+			"color" : 0xaaaaaa
+		},
+		{
+			"type" : "plane";
+			"position" : [0, 40, 0];
+			"rotation" : [90, 0, 0];
+			"reflection" : 0;
+			"transparency" : 0;
+			"ior" : 0;
+			"color" : 0x3399ff
+		},
+		{
+			"type" : "sphere";
+			"position" : [10, 0, 5];
+			"rotation" : [0, 0, 0];
+			"reflection" : 0.2;
+			"transparency" : 0;
+			"ior" : 0;
+			"radius" : 3;
+			"color" : 0x00e600
+		},
+		{
+			"type" : "sphere";
+			"position" : [-10, 0, 5];
+			"rotation" : [0, 0, 0];
+			"reflection" : 0.2;
+			"transparency" : 0;
+			"ior" : 0;
+			"radius" : 3;
+			"color" : 0xff5c33
+		},
+        {
+            "type" : "cylinder";
+            "position" : [-20, 10, 0];
+            "rotation" : [0, -45, 10];
+            "radius" : 3.5;
+            "reflection" : 0.1;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xff6699
+        },
+        {
+            "type" : "cone";
+            "position" : [10, 10, 5];
+            "rotation" : [0, 45, -10];
+            "angle" : 30;
+            "reflection" : 0.05;
+            "transparency" : 0;
+            "ior" : 0;
+            "color" : 0xffcc00
+        }
+	]
+}
