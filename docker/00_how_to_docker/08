@@ -1,4 +1,0 @@
-docker run --name alpine_container -it --rm alpine /bin/sh
-
-# -i Interactive mode (Keep STDIN open even if not attached)
-# -t Allocate a pseudo-TTY

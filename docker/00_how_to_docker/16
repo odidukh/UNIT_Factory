@@ -1,3 +1,0 @@
-docker logs -f spawning-pool
-
-# -f : follow log stream output

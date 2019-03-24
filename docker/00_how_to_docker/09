@@ -1,3 +1,0 @@
-apt-get update -y > /dev/null 2>&1 && apt-get upgrade -y > /dev/null 2>&1 && apt-get install -y gcc > /dev/null 2>&1 && apt-get install -y git > /dev/null 2>&1 && apt-get install -y vim > /dev/null 2>&1
-
-# docker run -it --rm debian /bin/bash
