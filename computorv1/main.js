@@ -1,1 +1,1 @@
-const quadratic_equation_solver = require("./solver");const main = (args) => {	console.log(args);	var a = args[0];	var b = args[1];	var c = args[2];	quadratic_equation_solver(a, b, c);};if (require.main === module){	main(process.argv.slice(2));}
+const quadratic_equation_solver = require("./solver");const main = (args) => {	console.log(args);	var a = args[0];	var b = args[1];	var c = args[2];	quadratic_equation_solver(a, b, c);};if (require.main === module){	main(process.argv.slice(2));}
