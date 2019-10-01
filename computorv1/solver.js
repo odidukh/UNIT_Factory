@@ -8,13 +8,13 @@ function quadratic_equation_solver (a, b, c) {
     if (Discriminant > 0) {
         let solution_2 = ((-b - sqrt(Discriminant)) / (2 * a)).toFixed(6);
         let solution_1 = ((-b + sqrt(Discriminant)) / (2 * a)).toFixed(6);
-        console.log("Discriminant is strictly positive, the two solution are:");
+        console.log("Discriminant is strictly positive, the two solutions are:");
         console.log(solution_1);
         console.log(solution_2);
     }
     if (Discriminant === 0) {
         let solution = (- b / (2 * a)).toFixed(6);
-        console.log("Discriminant equals 0. Single solution is:");
+        console.log("The solution is:");
         console.log(solution);
     }
     if (Discriminant < 0) {

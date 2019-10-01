@@ -127,19 +127,18 @@ function array_to_map(elements_arr) {
                 map_exp_coeff.set(parseInt(sub_temp_arr[1]), parseFloat(temp_arr[0]));
             }
         }
-        console.log(map_exp_coeff);
     }
+    return(map_exp_coeff);
 }
 
 
-coefficients_with_power = function () {
-
+function coefficients_with_power() {
     let equation = process.argv.slice(2).join("").split(" ").join("");
     check_forbidden_signs(equation);
     check_signs_position(equation);
-    elements_array = internal_operations(equation);
+    let elements_array = internal_operations(equation);
 
     return array_to_map(elements_array);
-};
+}
 
 module.exports = coefficients_with_power;
