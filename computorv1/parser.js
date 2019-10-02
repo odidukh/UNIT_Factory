@@ -14,14 +14,14 @@ function check_forbidden_signs (equation) {
 
 function check_signs_position (equation) {
     [...equation].forEach((char, index) => {
-        if (char === '+' && !allowed_numbers.includes(equation[index + 1])) {
-            console.log("Typo error: need a number after '+' sign");
-            process.exit(0);
-        }
-        if (char === '-' && !allowed_numbers.includes(equation[index + 1])) {
-            console.log("Typo error: need a number after '-' sign");
-            process.exit(0);
-        }
+        // if (char === '+' && !allowed_numbers.includes(equation[index + 1])) {
+        //     console.log("Typo error: need a number after '+' sign");
+        //     process.exit(0);
+        // }
+        // if (char === '-' && !allowed_numbers.includes(equation[index + 1])) {
+        //     console.log("Typo error: need a number after '-' sign");
+        //     process.exit(0);
+        // }
         if (char === '*' && (!allowed_numbers.includes(equation[index - 1]) ||
             !allowed_letters.includes(equation[index + 1]))) {
             console.log("Typo error: need a number before '*' sign and a letter after");
@@ -32,10 +32,10 @@ function check_signs_position (equation) {
             console.log("Typo error: need a letter before '^' sign and a number after");
             process.exit(0);
         }
-        if (allowed_letters.includes(char) && (equation[index + 1] !== '^')) {
-            console.log("Typo error: need '^' sign after 'X' letter");
-            process.exit(0);
-        }
+        // if (allowed_letters.includes(char) && (equation[index + 1] !== '^')) {
+        //     console.log("Typo error: need '^' sign after 'X' letter");
+        //     process.exit(0);
+        // }
     });
 }
 
@@ -90,50 +90,46 @@ function internal_operations(equation) {
     return elements_arr;
 }
 
+function array_to_map(array_of_terms) {
+    let map_degree_coefficient = new Map([[0, 0], [1, 0], [2, 0]]);
 
-function array_to_map(elements_arr) {
-    let map_exp_coeff = new Map();
+    array_of_terms.forEach(term => {
+        let minus = 1;
+        let coefficient  = 0;
+        let degree = 0;
 
-    for (let i = 0; i < elements_arr.length; i++) {
-
-        let temp_arr = elements_arr[i].split('*');
-        if (temp_arr.length === 1) {
-            if (allowed_letters.includes(temp_arr[0]) && temp_arr[0].length === 1) {
-                if (map_exp_coeff.has(1)) {
-                    map_exp_coeff.set(1, map_exp_coeff.get(1) + 1);
-                } else {
-                    map_exp_coeff.set(1, 1);
-                }
-            }
-            let sub_temp_arr = temp_arr[0].split('^');
-            if (sub_temp_arr.length !== 2){
-                if (map_exp_coeff.has(0)) {
-                    map_exp_coeff.set(parseInt('0'), parseFloat(map_exp_coeff.get(0)) + parseFloat(sub_temp_arr[0]));
-                } else {
-                    map_exp_coeff.set(parseInt('0'), parseFloat(sub_temp_arr[0]));
-                }
-            } else {
-                if (map_exp_coeff.has(sub_temp_arr[1])) {
-                    map_exp_coeff.set(parseInt(sub_temp_arr[1]), parseFloat(map_exp_coeff.get(parseInt(sub_temp_arr[1]) + 1)));
-                } else {
-                    map_exp_coeff.set(parseInt(sub_temp_arr[1]), 1);
-                }
-            }
-        } else {
-            let sub_temp_arr = temp_arr[1].split('^');
-            if (map_exp_coeff.has(parseInt(sub_temp_arr[1]))) {
-                map_exp_coeff.set(parseInt(sub_temp_arr[1]), map_exp_coeff.get(parseInt(sub_temp_arr[1])) + parseFloat(temp_arr[0]));
-            } else {
-                map_exp_coeff.set(parseInt(sub_temp_arr[1]), parseFloat(temp_arr[0]));
-            }
+        if (term[0] === '-') {
+            minus = -1;
+            term = term.substr(1);
         }
-    }
-    return(map_exp_coeff);
+
+        if (term.includes('*') && term.includes('^')) {
+            coefficient = parseFloat(term.split('*')[0]);
+            degree = parseInt(term.split('*')[1].split('^')[1]);
+        } else if (term.includes('*') && !term.includes('^')) {
+            coefficient = parseFloat(term.split('*')[0]);
+            degree = 1;
+        } else if (!term.includes('*') && term.includes('^')) {
+            coefficient = 1;
+            degree = parseInt(term.split('^')[1]);
+        } else if (!term.includes('*') && !term.includes('^') && term[0] === 'X') {
+            coefficient = 1;
+            degree = 1;
+        } else {
+            coefficient = parseFloat(term);
+            degree = 0;
+        }
+        if (map_degree_coefficient.has(degree)) {
+            map_degree_coefficient.set(degree, map_degree_coefficient.get(degree) + coefficient * minus);
+        } else {
+            map_degree_coefficient.set(degree, coefficient * minus);
+        }
+    });
+    return (map_degree_coefficient);
 }
 
-
-function coefficients_with_power() {
-    let equation = process.argv.slice(2).join("").split(" ").join("");
+function coefficients_with_power(input_string) {
+    let equation = input_string.join("").split(" ").join("");
     check_forbidden_signs(equation);
     check_signs_position(equation);
     let elements_array = internal_operations(equation);

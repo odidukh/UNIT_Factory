@@ -18,11 +18,16 @@ function quadratic_equation_solver (a, b, c) {
         console.log(solution);
     }
     if (Discriminant < 0) {
-        let Real_part = -b / (2 * a).toFixed(6);
-        let Imaginary_part  = (sqrt(-Discriminant) / (2 * a)).toFixed(6);
-        console.log("Discriminant is less then 0. Solutions are complex numbers with real and imaginary part:");
-        console.log(Real_part + " + " + Imaginary_part + "i");
-        console.log(Real_part + " - " + Imaginary_part + "i");
+        if (b === 0) {
+            console.log("Discriminant is less then 0. Solution is a complex number:");
+            console.log(sqrt(-Discriminant).toFixed(6) + 'i')
+        } else {
+            let Real_part = -b / (2 * a).toFixed(6);
+            let Imaginary_part = (sqrt(-Discriminant) / (2 * a)).toFixed(6);
+            console.log("Discriminant is less then 0. Solutions are complex numbers:");
+            console.log(Real_part + " + " + Imaginary_part + "i");
+            console.log(Real_part + " - " + Imaginary_part + "i");
+        }
     }
 
 };
