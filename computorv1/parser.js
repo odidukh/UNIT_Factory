@@ -1,6 +1,27 @@
-const allowed_signs = ['+', '-', '*', '^'];
+const allowed_signs = ['+', '-', '*', '^', '.'];
 const allowed_letters = ['X', 'x'];
 const allowed_numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+function check_equal_sign(equation) {
+    let count = 0;
+
+    [...equation].forEach(char => {
+        if (char === '=') {
+            count++;
+        }
+    });
+
+    if (count !== 1) {
+        console.log("Error: wrong number of '=' sign");
+        process.exit(0);
+    }
+
+    equation = equation.split('=');
+    if (equation.length !== 2 || equation[0].length === 0 || equation[1].length === 0) {
+        console.log("Error: wrong position of '=' sign");
+        process.exit(0);
+    }
+}
 
 function check_forbidden_signs (equation) {
     [...equation].forEach(char => {
@@ -14,6 +35,16 @@ function check_forbidden_signs (equation) {
 
 function check_signs_position (equation) {
     [...equation].forEach((char, index) => {
+        if (allowed_signs.includes(char) && allowed_signs.includes(equation[index + 1])) {
+            console.log("Typo error: after \"", char, "\" cannot be \"", equation[index + 1], "\" sign");
+            process.exit(0);
+        }
+
+        if (char === '.' && (!allowed_numbers.includes(equation[index - 1]) || !allowed_numbers.includes(equation[index + 1]))) {
+            console.log("Typo error: char '.' should be surrounded by numbers only");
+            process.exit(0);
+        }
+
         // if (char === '+' && !allowed_numbers.includes(equation[index + 1])) {
         //     console.log("Typo error: need a number after '+' sign");
         //     process.exit(0);
@@ -27,29 +58,43 @@ function check_signs_position (equation) {
             console.log("Typo error: need a number before '*' sign and a letter after");
             process.exit(0);
         }
-        if (char === '^' && (!allowed_letters.includes(equation[index - 1]) ||
+        if (char === '^' && (!allowed_letters.includes(equation[index - 1]) &&
             !allowed_numbers.includes(equation[index + 1]))) {
             console.log("Typo error: need a letter before '^' sign and a number after");
             process.exit(0);
         }
-        // if (allowed_letters.includes(char) && (equation[index + 1] !== '^')) {
-        //     console.log("Typo error: need '^' sign after 'X' letter");
-        //     process.exit(0);
-        // }
+        if (allowed_letters.includes(char) && ((allowed_letters.includes(equation[index + 1]) || allowed_numbers.includes(equation[index + 1])))) {
+            console.log("Typo error: wrong character after 'X' letter");
+            process.exit(0);
+        }
+         if (allowed_numbers.includes(char) && (allowed_letters.includes(equation[index + 1]) || equation[index + 1] === '^')) {
+             console.log("Typo error: wrong character after number \"" + char + "\"");
+             process.exit(0);
+        }
     });
 }
 
-function internal_operations(equation) {
-    equation = equation.split('=');
-    [...equation[1]].forEach((char, index) => {
-        if (char === '-') {
-            equation[1][index] = '+'
+function check_point_count(elements_array) {
+    elements_array.forEach(element => {
+        let count = 0;
+        [...element].forEach(char => {
+            if (char === '.') {
+                count++;
+            }
+        });
+        if (count > 1) {
+            console.log("Typo error: wrong number of '.' sign");
+            process.exit(0);
         }
-    });
+    })
+}
 
-    function sign_inverse (string) {
-        let temp_string = string;
-        let shift = 0;
+function sign_inverse (string) {
+    let temp_string = string;
+    let shift = 0;
+    if (string === "0") {
+        temp_string = "0"
+    } else {
         for (let i = 0; i < string.length; i++) {
             if (i === 0 && !allowed_signs.includes(string[0])) {
                 temp_string = ['-', temp_string].join('');
@@ -61,8 +106,17 @@ function internal_operations(equation) {
 
             }
         }
-        return (temp_string);
     }
+    return (temp_string);
+}
+
+function internal_operations(equation) {
+    equation = equation.toUpperCase().split('=');
+    [...equation[1]].forEach((char, index) => {
+        if (char === '-') {
+            equation[1][index] = '+'
+        }
+    });
 
     equation[1] = sign_inverse(equation[1]);
 
@@ -87,8 +141,12 @@ function internal_operations(equation) {
             }
         })
     });
+
+    check_point_count(elements_arr);
+
     return elements_arr;
 }
+
 
 function array_to_map(array_of_terms) {
     let map_degree_coefficient = new Map([[0, 0], [1, 0], [2, 0]]);
@@ -119,6 +177,7 @@ function array_to_map(array_of_terms) {
             coefficient = parseFloat(term);
             degree = 0;
         }
+
         if (map_degree_coefficient.has(degree)) {
             map_degree_coefficient.set(degree, map_degree_coefficient.get(degree) + coefficient * minus);
         } else {
@@ -130,6 +189,7 @@ function array_to_map(array_of_terms) {
 
 function coefficients_with_power(input_string) {
     let equation = input_string.join("").split(" ").join("");
+    check_equal_sign(equation);
     check_forbidden_signs(equation);
     check_signs_position(equation);
     let elements_array = internal_operations(equation);

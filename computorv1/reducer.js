@@ -1,3 +1,5 @@
+let signs_with_spaces = ['+', '-', '*', '='];
+
 function natural_reduced_form(map) {
     let reduced_equation = '';
 
@@ -47,9 +49,13 @@ function natural_reduced_form(map) {
         }
     });
 
+    if (reduced_equation.length === 0) {
+        return;
+    }
+
     reduced_equation = reduced_equation + '=0';
 
-    return (reduced_equation.split('').join(' ').replace(/ \^ /g, '^'));
+    return (reduced_equation.replace(new RegExp('\\' + signs_with_spaces.join('|\\'), 'g'), ' $& '));
 }
 
 function usual_reduced_form(map) {
@@ -67,9 +73,12 @@ function usual_reduced_form(map) {
         }
     });
 
+    if (reduced_equation.length === 0) {
+        return ;
+    }
     reduced_equation = reduced_equation + '=0';
 
-    return (reduced_equation.split('').join(' ').replace(/ \^ /g, '^'));
+    return (reduced_equation.replace(new RegExp('\\' + signs_with_spaces.join('|\\'), 'g'), ' $& '));
 }
 
 function reducer(map, initial_equation) {
