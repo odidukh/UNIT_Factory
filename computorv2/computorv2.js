@@ -1,9 +1,11 @@
-const parseAndCompute = require('./parser');
+// const parseAndCompute = require('./parser');
 const validator = require('./validator');
 const realNumberComp = require('./realNumCalculation');
 const output = require('./stdout');
 const func = require('./functions');
 const equationSolver = require('./functionComputor');
+const matrix = require('./matrixOperations');
+const complexNumbers = require('./complex');
 
 let stdin = process.openStdin();
 
@@ -14,20 +16,13 @@ global.variablesDB = {
 	'complexes': {},
 };
 
-// global.history = 'I\nam\na\nhistory';
-let history = '';
-(function(){
-	let oldLog = console.log;
-	console.log = function (message) {
-		history += Array.prototype.join.call(arguments, ' ') + '\n';
-		oldLog.apply(console, arguments);
-	};
-})();
+global.history = '';
+
 
 global.saveAndOutput = function (output) {
 	history.concat('\n', output);
 	console.log(output);
-}
+};
 
 function variableToValue(variables, stringWithVariables) {
 	Object.keys(variables).forEach(variableName => {
@@ -55,14 +50,41 @@ function generalComputations(inputString) {
 	}
 
 	function solveEquation(leftPart, rightPart) {
-		rightPart = variableToValue(variablesDB, rightPart);
+		rightPart = variableToValue(variablesDB.real, rightPart);
 		let equation = variablesDB.functions[leftPart].functionExpression;
-		equation.concat('=', rightPart);
-		equationSolver(equation);
+		let variable = variablesDB.functions[leftPart].variableName;
+		equation = equation + '=' + rightPart;
+		equationSolver(equation, variable);
 	}
 
+	function variableTypeSelector(varName, expression) {
+		expression = variableToValue(variablesDB.real, expression);
+		if (varName.includes('(')) {
+			expression = func.functionRead(variablesDB.functions, expression);
+			let functionObject = func.functionProcessor(varName, expression);
+			variablesDB.functions[varName] = functionObject;
+			console.log(functionObject.functionExpression);
+		} else if (expression.includes('[')) {
+			let matrixObj = matrix.matrix(expression);
+			variablesDB.matrices[varName] = matrixObj.matrix;
+			let matrixExp = matrixObj.matrix.split(';');
+			matrixExp.forEach(row => {
+				console.log('[ ' + row.substring(1, row.length - 1).split(',').join(' , ') + ' ]')
+			})
+		} else if (expression.includes('i')) {
+			let complex = complexNumbers(expression);
+			variablesDB.complexes[varName] = complex;
+			console.log(complex)
+		} else {
+			let realNum = realNumberComp(expression);
+			variablesDB.real[varName] = realNum;
+			console.log(realNum);
+		}
+	}
+
+
 	function saveVariable(leftPart, rightPart) {
-		
+		variableTypeSelector(leftPart, rightPart);
 	}
 
 	if (rightPart === '?') {
@@ -107,36 +129,3 @@ stdin.addListener("data", d => {
 
 	inputProcessor(input);
 });
-
-
-// stdin.addListener("data", d => {
-// 	validator(d.toString());
-// 	let input = d.toString().trim();
-// 	input = input.split('=');
-// 	let stringWithVariables = input[1];
-// 	if (input[1].trim() === '?') {
-// 		stringWithVariables = input[0];
-// 		input[0] = '?'
-// 	}
-// 	if (input[1].includes('?')) {
-// 		input[0] = variableToValueChange(variablesDB, input[0]);
-// 		input[1] = variableToValueChange(variablesDB, input[1]);
-// 		input[1] = input[1].split('?').join('');
-// 		Object.keys(variablesDB).forEach(variableName => {
-// 			if (input[0].includes(variableName) && typeof variablesDB[variableName] === "object"
-// 				&& variablesDB[variableName].functionName) {
-// 					input[0] = variablesDB[variableName].functionExpression
-// 			}
-// 		});
-// 		equationSolver(input.join('='))
-// 	} else {
-// 		input[1] = variableToValueChange(variablesDB, stringWithVariables);
-// 		input[1] = func.functionRead(variablesDB, input[1]);
-// 		input = input.join('=');
-// 		let variableObject = parseAndCompute(input);
-// 		if (input[0] !== '?') {
-// 			variablesDB[variableObject.name] = variableObject.value;
-// 		}
-// 		output(variableObject);
-// 	}
-// });

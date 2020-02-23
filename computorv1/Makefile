@@ -3,13 +3,12 @@ NAME = computor
 all: $(NAME)
 
 $(NAME):
-	npm i
 	echo '#!/bin/sh' > ./computor
-	echo 'node ./functionComputor.js "$$@"' >> ./computor
+	echo 'node ./computor.js "$$@"' >> ./computor
 	chmod +x ./computor
 
 clean:
-	rm -rf node_modules
+	rm -f computor
 
 fclean: clean
 	rm -f computor

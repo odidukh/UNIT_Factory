@@ -36,8 +36,7 @@ function functionProcessor(funcName, func) {
 
 function functionRead(variables, input) {
 	Object.keys(variables).forEach(variableName => {
-		if (input.includes(variableName) && typeof variables[variableName] === "object"
-			&& variables[variableName].functionName) {
+		if (input.includes(variableName) && variables[variableName].functionName) {
 			while (input.includes(variableName)) {
 				let funcExp = variables[variableName].functionExpression;
 				let functionVariable = variables[variableName].variableName;

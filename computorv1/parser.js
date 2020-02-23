@@ -39,20 +39,10 @@ function check_signs_position (equation) {
             console.log("Typo error: after \"", char, "\" cannot be \"", equation[index + 1], "\" sign");
             process.exit(0);
         }
-
         if (char === '.' && (!allowed_numbers.includes(equation[index - 1]) || !allowed_numbers.includes(equation[index + 1]))) {
             console.log("Typo error: char '.' should be surrounded by numbers only");
             process.exit(0);
         }
-
-        // if (char === '+' && !allowed_numbers.includes(equation[index + 1])) {
-        //     console.log("Typo error: need a number after '+' sign");
-        //     process.exit(0);
-        // }
-        // if (char === '-' && !allowed_numbers.includes(equation[index + 1])) {
-        //     console.log("Typo error: need a number after '-' sign");
-        //     process.exit(0);
-        // }
         if (char === '*' && (!allowed_numbers.includes(equation[index - 1]) ||
             !allowed_letters.includes(equation[index + 1]))) {
             console.log("Typo error: need a number before '*' sign and a letter after");
@@ -67,7 +57,7 @@ function check_signs_position (equation) {
             console.log("Typo error: wrong character after 'X' letter");
             process.exit(0);
         }
-         if (allowed_numbers.includes(char) && (allowed_letters.includes(equation[index + 1]) || equation[index + 1] === '^')) {
+         if (allowed_numbers.includes(char) && equation[index + 1] === '^') {
              console.log("Typo error: wrong character after number \"" + char + "\"");
              process.exit(0);
         }
@@ -147,11 +137,26 @@ function internal_operations(equation) {
     return elements_arr;
 }
 
+function check_whole_degree(part) {
+    if (part.includes('^')) {
+        if (part.split('^')[1].includes('.')) {
+            console.log("Error: a degree can only be a whole number");
+            process.exit(0);
+        }
+        if (part.split('^')[1][0] === '0' && part.split('^')[1].length > 1) {
+            console.log(("Typo error: '0' can be on the first place in the degree"));
+            process.exit(0);
+        }
+    }
+}
+
 
 function array_to_map(array_of_terms) {
     let map_degree_coefficient = new Map([[0, 0], [1, 0], [2, 0]]);
 
     array_of_terms.forEach(term => {
+        check_whole_degree(term);
+
         let minus = 1;
         let coefficient  = 0;
         let degree = 0;
@@ -167,11 +172,17 @@ function array_to_map(array_of_terms) {
         } else if (term.includes('*') && !term.includes('^')) {
             coefficient = parseFloat(term.split('*')[0]);
             degree = 1;
-        } else if (!term.includes('*') && term.includes('^')) {
+        } else if (!term.includes('*') && term.includes('^') && term[0] === 'X') {
             coefficient = 1;
             degree = parseInt(term.split('^')[1]);
         } else if (!term.includes('*') && !term.includes('^') && term[0] === 'X') {
             coefficient = 1;
+            degree = 1;
+        } else if (!term.includes('*') && term.includes('^') && term.includes('X')) {
+            coefficient = parseFloat(term.split('X')[0]);
+            degree = parseInt(term.split('^')[1]);
+        } else if (!term.includes('*') && !term.includes('^') && term.includes('X')) {
+            coefficient = parseFloat(term.split('X')[0]);
             degree = 1;
         } else {
             coefficient = parseFloat(term);
@@ -188,9 +199,9 @@ function array_to_map(array_of_terms) {
 }
 
 function coefficients_with_power(input_string) {
-    let equation = input_string.split(" ").join("");
-    check_equal_sign(equation);
+    let equation = input_string.join("").split(" ").join("");
     check_forbidden_signs(equation);
+    check_equal_sign(equation);
     check_signs_position(equation);
     let elements_array = internal_operations(equation);
 
