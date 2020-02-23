@@ -1,12 +1,12 @@
-NAME = computor
+NAME = computorv2
 
 all: $(NAME)
 
 $(NAME):
 	npm i
-	echo '#!/bin/sh' > ./computor
-	echo 'node ./functionComputor.js "$$@"' >> ./computor
-	chmod +x ./computor
+	echo '#!/bin/sh' > ./computorv2
+	echo 'node ./computorv2.js "$$@"' >> ./computorv2
+	chmod +x ./computorv2
 
 clean:
 	rm -rf node_modules
