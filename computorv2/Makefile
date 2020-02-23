@@ -5,7 +5,7 @@ all: $(NAME)
 $(NAME):
 	npm i
 	echo '#!/bin/sh' > ./computorv2
-	echo 'node ./computor.js "$$@"' >> ./computorv2
+	echo 'node ./computorv2.js "$$@"' >> ./computorv2
 	chmod +x ./computorv2
 
 clean:

@@ -31,6 +31,7 @@ function modulo(num1, num2) {
 }
 
 function computations(expression) {
+
 	expression = String(expression).replace('--', '').split('+');
 	let result = 0;
 	for (let i = 0; i < expression.length; i++) {
@@ -39,7 +40,7 @@ function computations(expression) {
 			let rightPart = expression[i].substring(expression[i].indexOf('^') + 1);
 			let rightPartRemain = '';
 			let leftPartRemain = '';
-			for (let j = leftPart.length - 1; j >= 0 ; j--) {
+			for (let j = leftPart.length - 1; j >= 0; j--) {
 				let operationSign = leftPart[j];
 				if (operationSign === '*' || operationSign === '/'
 					|| operationSign === '%' || operationSign === '^') {
@@ -109,10 +110,23 @@ function computations(expression) {
 	return result;
 }
 
-function sequence(expression) {
-	if (expression.includes('(')) {
+function findClosingBracket(str, pos) {
+	const rExp = /[()]/g;
+	rExp.lastIndex = pos + 1;
+	let deep = 1;
+	while ((pos = rExp.exec(str))) {
+		if (!(deep += str[pos.index] === "(" ? 1 : -1)) {
+			return pos.index
+		}
+	}
+}
+
+function bracketOpener(expression) {
+	while (expression.includes('(')) {
 		expression = expression.substring(0, expression.indexOf('(')) +
-			sequence(expression.substring(expression.indexOf('(') + 1));
+			bracketOpener(expression.substring(expression.indexOf('(') + 1,
+				findClosingBracket(expression, expression.indexOf('(')))) +
+			expression.substring(findClosingBracket(expression, expression.indexOf('('))+ 1);
 	}
 	return (computations(expression));
 }
@@ -122,10 +136,10 @@ function realNumbers(expression) {
 	let step = 0;
 	let tempExpression = expression;
 	for (let i = 0; i < tempExpression.length; i++) {
-		if (tempExpression[i]  === '-') {
+		if (tempExpression[i] === '-') {
 			expression = expression.substring(0, i + step) + '+' + expression.substring(i + step);
 			step++;
 		}
 	}
-	return sequence(expression);
+	return bracketOpener(expression);
 }
